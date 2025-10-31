@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      n = prompt("Introduce un número:");
+      var pi = 0;
+      for (i = 1; i < n; i += 2) {
+        pi += 4 / i;
+        i += 2;
+        pi -= 4 / i;
+      }
+      document.write(pi);
+    </script>
+  </body>
+</html>

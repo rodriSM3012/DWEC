@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let numero=NaN;
+        while (isNaN(numero)){
+            numero = parseInt(prompt("Introduzca un número entero"));
+            if (isNaN(numero)){
+                alert("Has introducido un contenido no valido")
+            }
+        }
+        //Metemos en etiqueta pre para que mantenga el formato de texto y respete los espacios
+        document.write("<pre>")
+        //Bucle para las filas
+        for (let i=0;i<numero;i++){
+            //Bucle para generar los espacios. Cada fila necestiamos i espacios menos (numero-i)
+            for (let j=1;j<numero-i;j++){
+                document.write("&nbsp;");
+            }
+            //Bucle para los asteriscos. Cada fila tenemos que escribir i asteriscos
+            for (let k=0;k<=i;k++){
+                document.write("*");
+            }
+            document.write("</br>");
+        }
+        document.write("</pre>");
+        document.write("<hr>");
+        document.write("<pre>");
+        for (let i=0;i<numero;i++){
+            //Bucle para generar los espacios. Cada fila necestiamos i espacios mas (numero-i)
+            for (let j=0;j<i;j++){
+                document.write("&nbsp;");
+            }
+            //Buccle para los asteriscos. Cada fila tenemos que escribir numero-i asteriscos
+            for (let k=0;k<numero-i;k++){
+                document.write("*");
+            }
+            document.write("</br>");
+        }
+        document.write("</pre>");
+        document.write("<hr>");
+        document.write("<pre>");
+        for (let i=0;i<numero;i++){
+            //Bucle para generar los espacios. Cada fila necestiamos i espacios menos (numero-i)
+            for (let j=1;j<numero-i;j++){
+                document.write("&nbsp;");
+            }
+            //Buccle para los asteriscos. Cada fila tenemos que escribir i asteriscos
+            for (let k=0;k<=i;k++){
+                document.write("*");
+            }
+            document.write("</br>");
+        }
+        for (let i=1;i<numero;i++){
+            //Bucle para generar los espacios. Cada fila necestiamos i espacios mas (numero-i)
+            for (let j=0;j<i;j++){
+                document.write("&nbsp;");
+            }
+            //Buccle para los asteriscos. Cada fila tenemos que escribir numero-i asteriscos
+            for (let k=0;k<numero-i;k++){
+                document.write("*");
+            }
+            document.write("</br>");
+        }
+        document.write("</pre>");
+        document.write("<hr>");
+        document.write("<pre>");
+        for  (let i=0;i<numero*2-1;i++){
+            if (i<numero){
+                for (let j=1;j<numero-i;j++){
+                    document.write("&nbsp;");
+                }
+                //Buccle para los asteriscos. Cada fila tenemos que escribir i asteriscos
+                for (let k=0;k<=i;k++){
+                    document.write("*");
+                }
+                document.write("</br>");
+            }
+            else{
+                for (let j=0;j<=i-numero;j++ ){
+                    document.write("&nbsp;");
+                }
+                for (let j=numero-1;j>i-numero;j-- ){
+                    document.write("*");
+                }
+                document.write("</br>");
+            }
+            
+        }
+        document.write("</pre>");
+    </script>
+
+</body>
+</html>

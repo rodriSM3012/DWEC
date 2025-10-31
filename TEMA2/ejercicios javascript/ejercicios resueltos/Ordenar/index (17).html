@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function comparaDosNumeros(numero1,numero2){
+            if (numero1<numero2){
+            document.write(numero1 + " ");
+            document.write(numero2)
+            }
+            else{
+                document.write(numero2 + " ");
+                document.write(numero1)
+            }
+        }
+        
+        function comparaTresNumeros(numero1,numero2,numero3){
+            if ((numero1<numero2)&&(numero1<numero3)){
+                document.write(numero1+" ");
+                comparaDosNumeros(numero2,numero3);
+            } 
+            else if ((numero2<numero1)&&(numero2<numero3)){
+                document.write(numero2);
+                comparaDosNumeros(numero1,numero3);
+            }
+            else{
+                document.write(numero3+" ");
+                comparaDosNumeros(numero1,numero2);
+            }
+        }
+
+        function comparaCuatroNumeros(numero1,numero2,numero3,numero4){
+            if ((numero1<numero2)&&(numero1<numero3)&&(numero1<numero4)){
+                document.write(numero1+" ");
+                comparaTresNumeros(numero2,numero3,numero4);
+            }
+            else if ((numero2<numero1)&&(numero2<numero3)&&(nnumero2<numero4)){
+                document.write(numero2+" ");
+                comparaTresNumeros(numero1,numero3,numero4);
+            }
+            else if ((numero3<numero1)&&(numero3<numero2)&&(numero3<nnumero4)){
+                document.write(numero3+" ");
+                comparaTresNumeros(numero1,numero2,numero3);
+            }
+            else{
+                document.write(numero4+" ");
+                comparaTresNumeros(numero1,numero2,numero3);
+            }
+        }
+
+
+        numero1=prompt("Dime un número");
+        numero2=prompt("Dime un segundo número");
+        comparaDosNumeros(numero1,numero2)
+
+        document.write("<br><hr><br>")
+
+        numero1=prompt("Dime un número");
+        numero2=prompt("Dime un segundo número");
+        numero3=prompt("Dime un tercer número");
+        comparaTresNumeros(numero1,numero2,numero3)
+
+        document.write("<br><hr><br>")
+
+        numero1=prompt("Dime un número");
+        numero2=prompt("Dime un segundo número");
+        numero3=prompt("Dime un tercer número");
+        numero4=prompt("Dime un cuarto número");
+
+        comparaCuatroNumeros(numero1,numero2,numero3,numero4);
+    </script>
+</body>
+</html>

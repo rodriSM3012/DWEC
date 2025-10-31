@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        numero1=prompt("Introduzca el primer número");
+        numero2=prompt("introduzca el segundo número");
+
+        resto=numero1%numero2;
+
+        if (resto){
+            document.write("La división no es exacta<br>");
+        }
+        else{
+            document.write("La división es exacta<br>")
+        }
+        //Una forma de hacerlo
+        document.write("El cociente es: " + ((numero1-resto)/numero2)+"<br>");
+        //Otra forma de hacerlo
+        cociente = parseInt(numero1/numero2);
+        document.write("El cociente es: " + (cociente)+"<br>");
+        document.write("El resto es: "+resto)
+
+    </script>
+</body>
+</html>

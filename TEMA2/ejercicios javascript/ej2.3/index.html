@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var dividendo = parseInt(prompt("Introduce un número entero: "));
+      var divisor = parseInt(prompt("Introduce otro número entero: "));
+      var cociente = parseInt(dividendo / divisor);
+      var resto = dividendo % divisor;
+      document.write(dividendo + " / " + divisor + "<br />");
+      if (resto == 0) document.write("La división es exacta.");
+      else document.write("La división no es exacta.");
+      document.write("<br />Cociente = " + cociente + "<br />Resto = " + resto);
+    </script>
+  </body>
+</html>

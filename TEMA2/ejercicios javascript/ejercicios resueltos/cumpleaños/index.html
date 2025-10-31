@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        day=parseFloat(prompt("Dia de nacimiento"));
+        month=parseFloat(prompt("Mes de nacimiento(en numero)"));
+        year=parseFloat(prompt("Año de nacimiento"));
+
+        actualDate=new Date ();
+
+        actualYear=actualDate.getFullYear();
+        actualMonth=actualDate.getMonth()+1;
+        actualDay=actualDate.getDate();
+
+        let age = actualYear-year;
+        let difMonth = actualMonth-month;
+        
+        if (difMonth<0 || (difMonth==0 && actualDay<day)){
+            age--;
+        }
+
+        document.write ("Tu edad es: "+age);
+
+    </script>
+</body>
+</html>

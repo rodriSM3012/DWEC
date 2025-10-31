@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function comprobarEquilatero(l1, l2, l3) {
+        if (l1 == l2 && l2 == l3) return true;
+        else return false;
+      }
+
+      function comprobarIsosceles(l1, l2, l3) {
+        if (l1 == l2 || l2 == l3 || l1 == l3) return true;
+        else return false;
+      }
+
+      function comprobarEscaleno(l1, l2, l3) {
+        if (comprobarEquilatero(l1, l2, l3) && comrpobarIsosceles(l1, l2, l3))
+          return true;
+        else return false;
+      }
+
+      alert("Introduce el valor de los lados de un triángulo.");
+      var l1 = parseFloat(prompt("Primer lado: "));
+      var l2 = parseFloat(prompt("Segundo lado: "));
+      var l3 = parseFloat(prompt("Tercer lado: "));
+
+      if (l1 + l2 > l3 && l1 + l3 > l2 && l2 + l3 > l1) {
+        if (comprobarEquilatero(l1, l2, l3)) {
+          document.write("El triángulo es equilátero.");
+        } else if (comprobarIsosceles(l1, l2, l3)) {
+          document.write("El triángulo es isósceles.");
+        } else if (comprobarEscaleno(l1, l2, l3)) {
+          document.write("El triángulo es escaleno.");
+        }
+      } else {
+        document.write("El triángulo no es válido.");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let n = parseInt(prompt("Introduce un número entero:"));
+      // triangulo normal
+      document.write("1.<br/>");
+      for (i = 0; i < n; i++) {
+        for (j = 1; j < n - i; j++) {
+          //   document.write("a");
+          document.write("&nbsp;");
+        }
+        for (j = 0; j <= i; j++) {
+          document.write("*");
+        }
+        document.write("<br/>");
+      }
+
+      // triangulo invertido
+      document.write("2.<br/>");
+      for (i = 0; i < n; i++) {
+        for (j = 0; j < i; j++) {
+          //   document.write("a");
+          document.write("&nbsp;");
+        }
+        for (j = n - i; j > 0; j--) {
+          document.write("*");
+        }
+        document.write("<br/>");
+      }
+      //triangulo doble
+      document.write("3.<br/>");
+      for (i = 0; i < 2 * n - 1; i++) {
+        if (i < n) {
+          for (j = 1; j < n - i; j++) {
+            // document.write("a");
+            document.write("&nbsp;");
+          }
+          for (j = 0; j <= i; j++) {
+            document.write("*");
+          }
+          document.write("<br/>");
+        } else {
+          for (j = 0; j < i - n + 1; j++) {
+            //   document.write("a");
+            document.write("&nbsp;");
+          }
+          for (j = 2 * n - i - 1; j > 0; j--) {
+            document.write("*");
+          }
+          document.write("<br/>");
+        }
+      }
+    </script>
+  </body>
+</html>

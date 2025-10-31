@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numero=NaN;
+        while (isNaN(numero)){
+            numero = parseInt(prompt("Introduzca un número entero"));
+            if (isNaN(numero)){
+                alert("Has introducido un contenido no valido")
+            }
+        }
+        //Bucle para las filas
+        for (let i=0;i<numero;i++){
+            //Bucle para escribir los asteriscos
+            for (let j=0;j<=i;j++ ){
+                document.write("*");
+            }
+            //Final de la linea de asteriscos
+            document.write("</br>");
+        }
+        //Bucle para las filas
+        for (let i=numero-1;i>=0;i--){
+            //Bucle para escribir los asteriscos
+            for (let j=0;j<i;j++ ){
+                document.write("*");
+            }
+            //Final de la linea de asteriscos
+            document.write("</br>");
+        }
+        document.write("<hr>");
+        for  (let i=0;i<numero*2-1;i++){
+            if (i<numero){
+                for (let j=0;j<=i;j++ ){
+                    document.write("*");
+                }
+            }
+            else{
+                for (let j=numero-1;j>i-numero;j-- ){
+                    document.write("*");
+                }
+            }
+            document.write("</br>");
+        }
+    </script>
+</body>
+</html>

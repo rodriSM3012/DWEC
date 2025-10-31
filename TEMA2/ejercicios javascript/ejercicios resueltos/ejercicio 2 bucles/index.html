@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numero=0;
+        while ((numero<1||numero>9)||isNaN(numero)){
+            numero = prompt("introduce un número del 1 al 9");
+            if(isNaN(numero)){
+                alert("No se ha introducido un número")
+            }
+            else if (numero<1||numero>9){
+                alert("El número esta fuera del rango admitido [1,9]");
+            }
+            
+        }
+
+        for (let i=1;i<11;i++){
+            document.write (numero+" * "+i+" = "+numero*i+"</br>");
+        }
+    </script>
+</body>
+</html>
