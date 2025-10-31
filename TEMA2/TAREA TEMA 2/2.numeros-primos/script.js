@@ -35,6 +35,8 @@ function esPrimo2(n) {
   }
   // si sale del bucle implica que sí es primo y llega al return true
   return true;
+  // aunque la funcion empieza a contar en 3 y se salta el 2, al ser i (3) mayor que n (2) antes de entrar al bucle, 
+  // no se cumple la condicion para entrar en el bucle, y pasa directamente a return true. tambien hace lo mismo con el 3
 }
 
 // se pide n al usuario por teclado
