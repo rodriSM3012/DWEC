@@ -33,15 +33,32 @@ function convertirCifradoCesar(cadena, n) {
       // comprueba que alfabeto ha sido sobreescrito despues de entrar en algun if
       char = cadena.charAt(i); // se saca el caracter segun la posicion dentro del string
       pos = alfabeto.indexOf(char); // posicion en la que se encuentra el char en el string de alfabeto
-      cadenaCifrada += alfabeto.charAt(pos + n); // se añade al final de la cadena el caracter en el alfabeto con la posicion pos + n
-      // en 1 sola linea seria:
-      // cadenaCifrada += alfabeto.charAt(alfabeto.indexOf(cadena.charAt(i)) + n);
+      // if para detectar cuando se sobrepasa la longitud de la cadena de alfabeto con pos + n
+      newPos = pos + n; // posicion del nuevo caracter que se va a poner
+      if (newPos >= alfabeto.length) {
+        newPos = (pos + n) % alfabeto.length;
+        /* 
+        ejemplo:
+        pos + n → 23 + 6 = 29 
+        29 > alfabeto.length
+        pos = 29 % alfabeto.length = 29 % 26 = 3
+        elegi usar el modulo en vez de restar directamente por si el usuario introduce un valor de n muy grande o cuando alfabeto tiene el valor de 
+        las cadenas con letras con tilde que son muy cortas y podria doblar la longitud del string alfabeto varias veces
+        */
+      }
+      cadenaCifrada += alfabeto.charAt(newPos); // se añade al final de la cadena el caracter en el alfabeto con la posicion pos + n
     } else {
       // si alfabeto no se ha sobreescrito, es que se trata de un caracter especial y no se cifra, se añade el mismo caracter
       cadenaCifrada += cadena.charAt(i);
     }
-    console.log(cadenaCifrada + "\n");
+    console.log(
+      "alfabeto:" +
+        alfabeto +
+        " nueva posicion:" +
+        newPos +
+        " cadena:" +
+        cadenaCifrada +
+        "\n"
+    );
   }
 }
-
-convertirCifradoCesar("hola mundo", 6);
