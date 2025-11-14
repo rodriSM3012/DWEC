@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarea Tema 3 - Ejercicios 1 + 2</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <label for="width"
+      >Introduce la anchura de la ventana:
+      <input type="text" name="width" id="width" /> </label
+    ><br />
+    <label for="height"
+      >Introduce la altura de la ventana:
+      <input type="text" name="height" id="height" /> </label
+    ><br />
+    <label for="url"
+      >Introduce la URL del sitio que se abrira en la ventana:
+      <input type="text" name="url" id="url" /> </label
+    ><br />
+    <button
+      onclick="abrirVentana(document.getElementById('width').value, document.getElementById('height').value, document.getElementById('url').value)"
+    >
+      Abrir ventana
+    </button>
+    <br /><br />
+    <label for="newURL"
+      >Para cambiar de página, introduce una nueva URL:
+      <input type="text" name="newURL" id="newURL" />
+    </label>
+    <button onclick="cambiarURL(document.getElementById('newURL').value)">
+      Cambiar URL
+    </button>
+  </body>
+</html>
