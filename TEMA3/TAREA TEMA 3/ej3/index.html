@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarea Tema 3 - Ejercicio 3</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <h1>Encriptador con cifrado César</h1>
+    <label for="string"
+      >Introduce una frase:
+      <input type="text" name="string" id="string" /> </label
+    ><br />
+    <label for="n"
+      >Espacios para desplazar: <input type="text" name="n" id="n" /> </label
+    ><br />
+    <button
+      onclick="convertirCifradoCesar(document.getElementById('string').value, document.getElementById('n').value)"
+    >
+      Convertir en cifrado César
+    </button>
+  </body>
+</html>
