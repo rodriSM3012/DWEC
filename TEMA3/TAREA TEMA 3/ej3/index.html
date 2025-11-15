@@ -15,10 +15,22 @@
     <label for="n"
       >Espacios para desplazar: <input type="text" name="n" id="n" /> </label
     ><br />
+    <!-- llama a la funcion de mostrarInfo  -->
     <button
-      onclick="convertirCifradoCesar(document.getElementById('string').value, document.getElementById('n').value)"
+      onclick="mostrarInfo(document.getElementById('string').value, document.getElementById('n').value)"
+      ;
     >
       Convertir en cifrado César
     </button>
+    <p>Cadena cifrada:</p>
+    <!-- el sig parrafo esta vacio pero despues de pulsar el boton se escribe en el parrafo la funcion convertirCifradoCesar() que se llama con mostrarInfo() usando .innerHTML  -->
+    <p id="cadenaCifrada"></p>
+    <script>
+      function mostrarInfo(string, n) {
+        n = parseInt(n); // esta linea es necesaria ya que el n que se introduce en el input se lee como string cuando deberia ser int para que la conversion salga como deberia
+        document.getElementById("cadenaCifrada").innerHTML =
+          convertirCifradoCesar(string, n);
+      }
+    </script>
   </body>
 </html>
