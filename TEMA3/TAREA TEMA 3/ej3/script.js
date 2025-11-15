@@ -51,6 +51,7 @@ function convertirCifradoCesar(cadena, n) {
       // si alfabeto no se ha sobreescrito, es que se trata de un caracter especial y no se cifra, se añade el mismo caracter
       cadenaCifrada += cadena.charAt(i);
     }
+    /*
     console.log(
       "alfabeto:" +
         alfabeto +
@@ -60,5 +61,10 @@ function convertirCifradoCesar(cadena, n) {
         cadenaCifrada +
         "\n"
     );
+    */
   }
+  // devuelve la cadena completa al terminar el bucle
+  return cadenaCifrada;
 }
+
+// convertirCifradoCesar("hola mundo", 1);
