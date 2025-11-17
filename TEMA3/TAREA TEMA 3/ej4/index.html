@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarea Tema 3 - Ejercicio 4</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <h1>Generador de contraseñas</h1>
+    <label for="n"
+      >Introduce la longitud que quieres que tenga la contraseña:
+      <input type="text" id="n" name="n" />
+    </label>
+    <br />
+    <button onclick="mostrarResultado(document.getElementById('n').value)">
+      Generar contraseña
+    </button>
+    <br />
+    <div id="resultado"></div>
+    <script>
+      function mostrarResultado(n) {
+        /*
+        en vez de innerHTML es necesario usar .textContext ya que al usar innerHTML el navegador lo interpreta como si fuese codigo HMTL,
+        y en la mayoria de casos no seria un problema, pero en este caso que estamos generando caracteres especiales como < y escribiendolos ene el html,
+        el navegador lo puede confundir con codigo html. al ser aleatorio podria perfectamente salir algo como "<br>" en la contraseña y el navegador
+        lo interpretaria como un salto de linea cuando en realidad forma parte de la contraseña
+
+        me di cuenta de esto al probar a generar muchas contraseñas y darme cuenta que, aunque en la consola demostraban tener la longitud correcta,
+        en la pagina aparecian mas cortas y a veces ni se mostraban
+        */
+        document.getElementById("resultado").textContent =
+          "Contraseña aleatoria: " + generatePassword(n);
+      }
+    </script>
+  </body>
+</html>
