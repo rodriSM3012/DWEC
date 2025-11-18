@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./script.js"></script>
+  </head>
+  <body>
+    <!-- seccion de input  -->
+    <label for="nombre"
+      >Nombre:
+      <input type="text" name="nombre" id="nombre" />
+    </label>
+    <br />
+    <label for="dayBirth"
+      >Dia nacimiento
+      <input type="text" name="dayBirth" id="dayBirth" />
+    </label>
+    <br />
+    <label for="monthBirth"
+      >Mes nacimiento
+      <input type="text" name="monthBirth" id="monthBirth" />
+    </label>
+    <br />
+    <label for="yearBirth"
+      >Año nacimiento
+      <input type="text" name="yearBirth" id="yearBirth" />
+    </label>
+    <br />
+    <button
+      onclick="mostrarTodosResultados(
+      document.getElementById('nombre').value,
+      document.getElementById('dayBirth').value,
+      document.getElementById('monthBirth').value,
+      document.getElementById('yearBirth').value)"
+    >
+      Mostrar
+    </button>
+    <!-- seccion de info  -->
+    <p id="mostrarNombre"></p>
+    <p id="contarCharConEspacios"></p>
+    <p id="mostrarPrimeraA"></p>
+    <p id="mostrarUltimaA"></p>
+    <p id="mostrarNombreQuitandoLetras"></p>
+    <p id="mostrarDiaNac"></p>
+  </body>
+</html>
