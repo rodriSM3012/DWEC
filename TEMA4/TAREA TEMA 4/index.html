@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tarea Tema 4 DWEC</title>
+    <script src="./game.js"></script>
+  </head>
+  <body>
+    <!-- botones  -->
+    <button
+      onclick="document.getElementById('divHeroe').innerHTML = mostrarHeroe()"
+    >
+      Muestra héroe
+    </button>
+    <button
+      onclick="document.getElementById('divSala').innerHTML = mostrarSala(parseInt(1))"
+    >
+      Muestra sala
+    </button>
+    <button onclick="">Muestra enemigo</button>
+    <!-- informacion -->
+    <div id="divHeroe"></div>
+    <div id="divEnemigo"></div>
+    <div id="divSala"></div>
+  </body>
+</html>
