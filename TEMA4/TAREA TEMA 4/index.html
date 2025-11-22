@@ -14,14 +14,21 @@
       Muestra héroe
     </button>
     <button
-      onclick="document.getElementById('divSala').innerHTML = mostrarSala(parseInt(1))"
+      onclick="document.getElementById('divEnemigo').innerHTML = mostrarEnemigoRandom()"
+    >
+      Muestra enemigo
+    </button>
+    <button
+      onclick="document.getElementById('divSala').innerHTML = mostrarSalaRandom()"
     >
       Muestra sala
     </button>
-    <button onclick="">Muestra enemigo</button>
     <!-- informacion -->
+    <h2>Información del Héroe:</h2>
     <div id="divHeroe"></div>
+    <h2>Información de un Enemigo:</h2>
     <div id="divEnemigo"></div>
+    <h2>Información de una Sala:</h2>
     <div id="divSala"></div>
   </body>
 </html>
