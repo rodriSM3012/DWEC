@@ -72,7 +72,8 @@ const defaultGameState = {
         monsterProb: 0.0,
         isShop: false,
         name: "Poblado de humanos",
-        description: "",
+        description:
+          "Torres góticas se alzan entre relámpagos; el viento arrastra agua helada, y el musgo brillante cruje bajo los pies en el sendero rocoso.",
         north: 1, // entrada
         south: null,
         west: null,
@@ -85,7 +86,8 @@ const defaultGameState = {
         monsterProb: 0.25,
         isShop: false,
         name: "Pasillo principal",
-        description: "",
+        description:
+          "Las columnas de piedra húmeda sostienen un techo arqueado; el aire es espeso, huele a hollín, y cada paso retumba con eco profundo en la penumbra.",
         north: 3, // sala del tesoro
         south: 1, // entrada
         west: 4, // tienda
@@ -98,7 +100,8 @@ const defaultGameState = {
         monsterProb: 0.7,
         isShop: false,
         name: "Cueva con un cofre del tesoro",
-        description: "",
+        description:
+          "Un cofre abierto brilla entre sombras; el oro irradia calor suave, y el aire huele a cuero y piedra húmeda, con ecos apagados desde lo alto.",
         north: null,
         south: 2, // pasillo
         west: null,
@@ -111,7 +114,8 @@ const defaultGameState = {
         monsterProb: 0.05,
         isShop: true,
         name: "Tienda del alquimista",
-        description: "",
+        description:
+          "Lámparas cálidas iluminan libros y frascos; el aire mezcla cera, tierra y papel viejo, y el suelo cruje con cada movimiento entre raíces ocultas.",
         north: null,
         south: null,
         west: null,
@@ -124,7 +128,8 @@ const defaultGameState = {
         monsterProb: 0.9,
         isShop: false,
         name: "Sala con cadenas",
-        description: "",
+        description:
+          "Cadenas oxidadas cuelgan del techo; el suelo refleja luz roja y emite calor pegajoso, mientras el silencio vibra con goteos metálicos.",
         north: null,
         south: null,
         west: 1, // pasillo
@@ -177,7 +182,7 @@ const defaultGameState = {
 // funcion para mostrar todos los atributos del heroe
 function mostrarHeroe() {
   return (
-    "<h2>Héroe<h2/>Nombre: " +
+    "Nombre: " +
     defaultGameState.player.name +
     "<br/>Puntos de salud: " +
     defaultGameState.player.health +
@@ -197,44 +202,90 @@ function mostrarHeroe() {
     defaultGameState.player.potions
   );
 }
-// funcion para mostrar todos los atributos de un enemigo segun su nombre
+// funcion para mostrar todos los atributos de un enemigo elegido aleatoriamente
+function mostrarEnemigoRandom() {}
 
-// funcion para mostrar todos los atributos de una habitacion segun su id
-function mostrarSala(id) {
+// funcion para mostrar todos los atributos de una habitacion elegida aleatoriamente
+function mostrarSalaRandom() {
+  // string para guardar todos los datos
   let datosSala = "";
-  // el bucle for recorre todos los elementos del array rooms dentro de map y defaultGameState
+  // n es un numero entero aleatorio entre 0 y el numero total de objetos dentro del array rooms
+  // se usara para elegir un array aleatorio dentro de rooms
+  n = parseInt(Math.random() * defaultGameState.map.rooms.length);
+
+  // incluye id, probabilidad de enemigo y tienda
+  datosSala +=
+    "Id: " +
+    defaultGameState.map.rooms[n].id +
+    "<br/>Probabilidad de aparición de enemigo: " +
+    defaultGameState.map.rooms[n].monsterProb * 100 + // para que aparezca como porcentaje
+    "%<br/>Tienda: ";
+  // comprueba si es una tienda o no con el atributo isShop e incluye si o no
+  if (defaultGameState.map.rooms[n].isShop) {
+    datosSala += "sí";
+  } else {
+    datosSala += "no";
+  }
+
+  // incluye nombre y descripcion
+  datosSala +=
+    "<br/>Nombre: " +
+    defaultGameState.map.rooms[n].name +
+    "<br/>Descripción: " +
+    defaultGameState.map.rooms[n].description;
+
+  // incluye datos de las salas adyacentes
+  datosSala += mostrarNombreSalaAdy(defaultGameState.map.rooms[n].id);
+
+  return datosSala;
+}
+
+// funcion para mostrar el nombre de las salas adyacentes a una sala concreta segun su id
+function mostrarSalasAdyacentes(id) {
+  // string para guardar los datos de la sala
+  datosSalasAdy = "";
+  n = posicionSalaSegunId(id);
+  let idSalaAdy = "";
+
+  // comprobacion de las salas adyacentes
+  datosSalasAdy +=
+    "<br/>Sala al norte: " +
+    mostrarNombreSalaAdy(defaultGameState.map.rooms[n].north) +
+    "<br/>Sala al sur: " +
+    mostrarNombreSalaAdy(defaultGameState.map.rooms[n].south) +
+    "<br/>Sala al oeste: " +
+    mostrarNombreSalaAdy(defaultGameState.map.rooms[n].west) +
+    "<br/>Sala al este: " +
+    mostrarNombreSalaAdy(defaultGameState.map.rooms[n].east);
+
+  /* 
+  la funcion creo que se podria hacer segun la posicion del array de una habitacion dentro del array de rooms en vez de segun su id
+  y se podria prescindir del bucle for y la comprobacion if (el que se usa en posicionSalaSegunId); 
+  sacando north, south, west y east con defaultGameState.map.rooms[i].north/south...
+  pero preferi hacerlo asi para usar el id como identificador para ser mas preciso
+  */
+}
+
+// funcion que escribe el nombre de una habitacion segun su id, y si el id es vacio escribe "ninguna"
+// esta diseñada especificamente para usarla en mostrarSalasAdyacentes() y evitar repetir codigo en esta
+function mostrarNombreSalaAdy(id) {
+  let nombreSalasAdy = "";
+  if (id != null) {
+    nombreSalasAdy += defaultGameState.map.rooms[posicionSalaSegunId(id)].name;
+  } else {
+    nombreSalasAdy += "ninguna";
+  }
+  return nombreSalasAdy;
+}
+
+// la funcion busca en rooms un array con la id que se pase al llamarla y devuelve la posicion que ocupa el array
+function posicionSalaSegunId(id) {
+  // el bucle recorre el array rooms para buscar que array dentro tiene la id que se ha pasado al llamar la funcion
   for (i = 0; i < defaultGameState.map.rooms.length; i++) {
-    // recorre todos los elementos 1 a 1 hasta que la condicion del if se cumpla
-    if (defaultGameState.map.rooms[i].id === id) {
-      // array donde se guardarán todos los datos. incluye id y probabilidad de enemigo
-      datosSala +=
-        "Id: " +
-        defaultGameState.map.rooms[i].id +
-        "<br/>Probabilidad de aparición de enemigo: " +
-        defaultGameState.map.rooms[i].monsterProb * 100 + // para que aparezca como porcentaje
-        "%<br/>Tienda: ";
-      // comprueba si es una tienda o no con el atributo isShop
-      if (defaultGameState.map.rooms[i].isShop) {
-        datosSala += "sí";
-      } else {
-        datosSala += "no";
-      }
-
-      // incluye nombre y descripcion
-      datosSala += "<br/>Nombre: " + defaultGameState.map.rooms[i].name;
-      "<br/>Descripción: " + defaultGameState.map.rooms[i].description;
-
-      // if (defaultGameState.map.rooms[i].north != null) {
-      //   datosSala +=
-      //     "\nSala al norte: " +
-      //     defaultGameState.map.rooms.id[defaultGameState.map.rooms[i].north];
-      // } else {
-      //   datosSala += "\nSala al norte: ninguna";
-      // }
-      return datosSala;
+    if (defaultGameState.map.rooms[i].id == id) {
+      return i;
     }
   }
 }
 
-// funcion para mostrar las salas adyacentes
-function mostrarSalasAdyacentes(id) {}
+// console.log(mostrarNombreSalaAdy(2));
