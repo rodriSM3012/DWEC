@@ -145,7 +145,8 @@ const defaultGameState = {
         // determina si es un enemigo mayor (boss) o menor
         isBoss: true,
         // descripcion del enemigo
-        description: "",
+        description:
+          "El dragón dorado se alza entre sombras, guardián de secretos antiguos. Su presencia impone respeto, Su presencia impone respeto, y el calor que emana parece distorsionar el aire a su alrededor.",
         // salud que tiene el enemigo
         health: 340,
         // fuerza del enemigo
@@ -159,7 +160,8 @@ const defaultGameState = {
       {
         name: "Orco",
         isBoss: false,
-        description: "",
+        description:
+          "El orco guerrero avanza con paso firme, guiado por años de batalla y un código brutal de honor. Su mirada transmite dominio, y su fuerza impone respeto incluso antes de luchar.",
         health: 90,
         strength: 17,
         defence: 16,
@@ -169,7 +171,8 @@ const defaultGameState = {
       {
         name: "Goblin",
         isBoss: false,
-        description: "",
+        description:
+          "El goblin se mueve con agilidad entre sombras, impulsado por una astucia cruel y deseos de saqueo. Su presencia genera inquietud, como si siempre estuviera al borde de atacar.",
         health: 20,
         strength: 11,
         defence: 9,
@@ -179,7 +182,7 @@ const defaultGameState = {
   },
 };
 
-// funcion para mostrar todos los atributos del heroe
+// funcion que devuelve un string para mostrar todos los atributos del heroe
 function mostrarHeroe() {
   return (
     "Nombre: " +
@@ -202,10 +205,35 @@ function mostrarHeroe() {
     defaultGameState.player.potions
   );
 }
-// funcion para mostrar todos los atributos de un enemigo elegido aleatoriamente
-function mostrarEnemigoRandom() {}
 
-// funcion para mostrar todos los atributos de una habitacion elegida aleatoriamente
+// funcion que devuelve un string para mostrar todos los atributos de un enemigo elegido aleatoriamente
+function mostrarEnemigoRandom() {
+  // n es un numero entero aleatorio entre 0 y el numero total de objetos dentro del array enemies
+  // se usara para elegir un array aleatorio dentro de enemies
+  n = parseInt(Math.random() * defaultGameState.map.enemies.length);
+  // array para guardar los datos del enemigo
+  datosEnemigo =
+    "Nombre: " + defaultGameState.map.enemies[n].name + "<br/>Jefe final: ";
+  if (defaultGameState.map.enemies[n].isBoss) {
+    datosEnemigo += "sí";
+  } else {
+    datosEnemigo += "no";
+  }
+  datosEnemigo +=
+    "<br/>Descripcion: " +
+    defaultGameState.map.enemies[n].description +
+    "<br/>Puntos de salud: " +
+    defaultGameState.map.enemies[n].health +
+    "<br/>Fuerza: " +
+    defaultGameState.map.enemies[n].strength +
+    "<br/>Defensa: " +
+    defaultGameState.map.enemies[n].defence +
+    "<br/>Ruta de la imagen: " +
+    defaultGameState.map.enemies[n].img;
+  return datosEnemigo;
+}
+
+// funcion que devuelve un string para mostrar todos los atributos de una habitacion elegida aleatoriamente
 function mostrarSalaRandom() {
   // string para guardar todos los datos
   let datosSala = "";
@@ -235,7 +263,7 @@ function mostrarSalaRandom() {
     defaultGameState.map.rooms[n].description;
 
   // incluye datos de las salas adyacentes
-  datosSala += mostrarNombreSalaAdy(defaultGameState.map.rooms[n].id);
+  datosSala += mostrarSalasAdyacentes(defaultGameState.map.rooms[n].id);
 
   return datosSala;
 }
@@ -243,9 +271,8 @@ function mostrarSalaRandom() {
 // funcion para mostrar el nombre de las salas adyacentes a una sala concreta segun su id
 function mostrarSalasAdyacentes(id) {
   // string para guardar los datos de la sala
-  datosSalasAdy = "";
-  n = posicionSalaSegunId(id);
-  let idSalaAdy = "";
+  let datosSalasAdy = "";
+  n = posicionSalaSegunId(parseInt(id));
 
   // comprobacion de las salas adyacentes
   datosSalasAdy +=
@@ -257,6 +284,7 @@ function mostrarSalasAdyacentes(id) {
     mostrarNombreSalaAdy(defaultGameState.map.rooms[n].west) +
     "<br/>Sala al este: " +
     mostrarNombreSalaAdy(defaultGameState.map.rooms[n].east);
+  return datosSalasAdy;
 
   /* 
   la funcion creo que se podria hacer segun la posicion del array de una habitacion dentro del array de rooms en vez de segun su id
@@ -271,7 +299,8 @@ function mostrarSalasAdyacentes(id) {
 function mostrarNombreSalaAdy(id) {
   let nombreSalasAdy = "";
   if (id != null) {
-    nombreSalasAdy += defaultGameState.map.rooms[posicionSalaSegunId(id)].name;
+    nombreSalasAdy +=
+      defaultGameState.map.rooms[posicionSalaSegunId(parseInt(id))].name;
   } else {
     nombreSalasAdy += "ninguna";
   }
@@ -281,11 +310,12 @@ function mostrarNombreSalaAdy(id) {
 // la funcion busca en rooms un array con la id que se pase al llamarla y devuelve la posicion que ocupa el array
 function posicionSalaSegunId(id) {
   // el bucle recorre el array rooms para buscar que array dentro tiene la id que se ha pasado al llamar la funcion
-  for (i = 0; i < defaultGameState.map.rooms.length; i++) {
-    if (defaultGameState.map.rooms[i].id == id) {
+  for (let i = 0; i < defaultGameState.map.rooms.length; i++) {
+    if (parseInt(defaultGameState.map.rooms[i].id) == parseInt(id)) {
       return i;
     }
   }
 }
 
 // console.log(mostrarNombreSalaAdy(2));
+// console.log(posicionSalaSegunId(3));
