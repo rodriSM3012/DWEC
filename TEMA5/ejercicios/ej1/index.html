@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ej1</title>
+    <script>
+      // funcion para que al pulsar un boton este cambie de color
+      function cambiarColor() {
+        // this pasa a ser el elemento con el que se llamo el addEventListener (boton)
+        let boton = this;
+        // crea un array con los diferentes colores posibles
+        let colors = ["red", "blue", "green", "yellow"];
+        // crea un numero entero aleatorio para elegir en el array colors
+        let n = parseInt(Math.random() * colors.length);
+        // accede al objeto del boton y le cambia el color aleatoriamente
+        boton.style.backgroundColor = colors[n];
+      }
+
+      // ejecuta las siguientes lineas solo despues de que la pagina y todos sus elementos hayan cargado
+      window.onload = function () {
+        // crea una variable que se asocia a un elemento del HTML que se saca con getElementById
+        var boton = document.getElementById("boton-cambiar-color");
+        // NO hay que poner () despues de cambiarColor
+        boton.addEventListener("click", cambiarColor);
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Ej1</h1>
+    <p>
+      Hacer un botón que al hacer click sobre él cambie de color entre varios.
+      El script debe incluirse en el head de la página.
+    </p>
+    <button id="boton-cambiar-color" onclick="">Cambiar color</button>
+  </body>
+</html>
