@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ej2</title>
+    <script>
+      window.onload = function () {
+        var button = document.getElementById("button");
+        // crea una variable para guardar una cuenta de las veces que se ha pulsado el boton
+        var cont = 0;
+        button.addEventListener("click", function () {
+          // suma +1 al contador si se hace click
+          cont++;
+          // lo escribe en el parrafo con id cont
+          document.getElementById("cont").innerHTML =
+            "Veces que se ha pulsado el botón: " + cont;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Ej2</h1>
+    <p>
+      Crear un contador en la pantalla que muestre cuantas veces hemos hecho
+      click sobre un botón. El script debe incluirse en el head de la página.
+    </p>
+    <button id="button">Pulsar</button>
+    <p id="cont"></p>
+  </body>
+</html>
