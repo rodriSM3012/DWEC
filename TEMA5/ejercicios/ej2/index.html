@@ -9,14 +9,18 @@
         var button = document.getElementById("button");
         // crea una variable para guardar una cuenta de las veces que se ha pulsado el boton
         var cont = 0;
+        writeCont(cont);
         button.addEventListener("click", function () {
           // suma +1 al contador si se hace click
           cont++;
-          // lo escribe en el parrafo con id cont
-          document.getElementById("cont").innerHTML =
-            "Veces que se ha pulsado el botón: " + cont;
+          writeCont(cont);
         });
       };
+
+      function writeCont(cont) {
+        // lo escribe en el span dentro del parrafo con id cont
+        document.getElementById("cont").innerHTML = cont;
+      }
     </script>
   </head>
   <body>
@@ -26,6 +30,6 @@
       click sobre un botón. El script debe incluirse en el head de la página.
     </p>
     <button id="button">Pulsar</button>
-    <p id="cont"></p>
+    <p>Veces que se ha pulsado el botón: <span id="cont"></span></p>
   </body>
 </html>
