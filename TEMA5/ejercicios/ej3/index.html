@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ej3</title>
+    <script>
+      let errorList = "";
+      let password = "";
+      let string = "";
+
+      string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const UPPERCASE = string.split("");
+      string = "1234567890";
+      const NUMBERS = string.split("");
+
+      window.onload = function () {
+        var button = document.getElementById("submit");
+        button.addEventListener("click", checkPassword);
+      };
+
+      function checkPassword(password) {
+        password = document.getElementById("password").value;
+        errorList = "";
+
+        if (password.length < 8) {
+          errorList += "<li>La contraseña tiene menos de 8 caracteres.</li>";
+        }
+
+        if (!findCharInString(UPPERCASE, password)) {
+          errorList += "<li>La contraseña no tiene ninguna mayúscula.</li>";
+        }
+
+        if (!findCharInString(NUMBERS, password)) {
+          errorList += "<li>La contraseña no tiene ningun número.</li>";
+        }
+
+        if (errorList == "") {
+          errorList = "<li>La contraseña es válida.</li>";
+        }
+
+        document.getElementById("error").innerHTML = errorList;
+      }
+
+      // funcion para buscar si algun caracter de un string esta en otro string
+      // se sacan los caracteres de string 1 y se buscan en string2
+      function findCharInString(string1, string2) {
+        string1.forEach((char) => {
+          if (string2.includes(char)) return true;
+        });
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Ej3</h1>
+    <section class="enunciado">
+      <p>
+        Crear un input de contraseña que muestre en tiempo real según el usuario
+        escribe (Tendremos los mensajes ya escritos en elementos p y cambiaremos
+        de rojo a verde según se cumpla o no la condición):
+      </p>
+      <ul>
+        <li>Si la contraseña tiene al menos 8 caracteres</li>
+        <li>Si la contraseña tiene al menos una mayúscula</li>
+        <li>Si contiene al menos un número</li>
+      </ul>
+      <p>
+        Usar el evento input para verificar mientras el usuario escribe. El
+        script debe incluirse en el head de la página.
+      </p>
+    </section>
+    <label for="password">Introduce la contraseña: </label>
+    <input type="password" id="password" name="password" />
+    <button id="submit">Enviar</button>
+    <ul id="error"></ul>
+  </body>
+</html>
