@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ej3</title>
     <script>
-      let errorList = "";
-      let password = "";
       let string = "";
 
       string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -15,40 +13,65 @@
       const NUMBERS = string.split("");
 
       window.onload = function () {
-        var button = document.getElementById("submit");
-        button.addEventListener("click", checkPassword);
+        // var button = document.getElementById("submit");
+        // button.addEventListener("click", checkPassword);
+
+        input = document.getElementById("password");
+        input.addEventListener("input", function () {
+          var errorList = checkPassword(password);
+
+          let errorLength = document.getElementById("errorLength");
+          let errorUCase = document.getElementById("errorUCase");
+          let errorNum = document.getElementById("errorNum");
+
+          changeColorRG(errorLength, errorList[0]);
+          changeColorRG(errorUCase, errorList[1]);
+          changeColorRG(errorNum, errorList[2]);
+        });
       };
 
-      function checkPassword(password) {
-        password = document.getElementById("password").value;
-        errorList = "";
+      // funcion para comprobar todos los requerimientos de la contraseña
+      // devuelve un array de numeros 1 o 0 dependiendo de que errores hay
+      function checkPassword() {
+        let password = document.getElementById("password").value;
+        // array con numeros que se ira sobreescribiendo o no dependiendo de la validez de password
+        let errorList = [1, 1, 1];
 
-        if (password.length < 8) {
-          errorList += "<li>La contraseña tiene menos de 8 caracteres.</li>";
+        // comprueba cada condicion y si no se cumple cambia el 1 dentro del array en una posicion concreta por un 0
+        if (!(password.length >= 8)) {
+          // longitud → posicion 0
+          errorList[0] = 0;
         }
-
         if (!findCharInString(UPPERCASE, password)) {
-          errorList += "<li>La contraseña no tiene ninguna mayúscula.</li>";
+          // mayusculas → posicion 1
+          errorList[1] = 0;
         }
-
         if (!findCharInString(NUMBERS, password)) {
-          errorList += "<li>La contraseña no tiene ningun número.</li>";
+          // numeros → posicion 2
+          errorList[2] = 0;
         }
 
-        if (errorList == "") {
-          errorList = "<li>La contraseña es válida.</li>";
-        }
-
-        document.getElementById("error").innerHTML = errorList;
+        return errorList;
       }
 
       // funcion para buscar si algun caracter de un string esta en otro string
       // se sacan los caracteres de string 1 y se buscan en string2
       function findCharInString(string1, string2) {
+        // bool es un valor para determinar si se encuentra el caracter o no, se inicializa con 0 y solo se actualiza como 1 si se encuentra un caracter
+        let bool = 0;
         string1.forEach((char) => {
-          if (string2.includes(char)) return true;
+          if (string2.includes(char)) bool = 1;
         });
-        return false;
+        return bool == 1 ? true : false;
+      }
+
+      // funcion para cambiar el color de un elemento del HTML a rojo o verde dependiendo de condition que puede ser true o false
+      function changeColorRG(element, condition) {
+        if (condition) {
+          element.style.color = "green";
+        } else {
+          element.style.color = "red";
+        }
       }
     </script>
   </head>
@@ -73,6 +96,10 @@
     <label for="password">Introduce la contraseña: </label>
     <input type="password" id="password" name="password" />
     <button id="submit">Enviar</button>
-    <ul id="error"></ul>
+    <ul>
+      <li id="errorLength">La contraseña debe tener mas de 8 caracteres.</li>
+      <li id="errorUCase">La contraseña debe tener al menos una mayúscula.</li>
+      <li id="errorNum">La contraseña debe tener al menos un número.</li>
+    </ul>
   </body>
 </html>
