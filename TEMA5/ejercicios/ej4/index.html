@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ej4</title>
+    <script>
+      window.onload = function () {
+        const taskInput = document.getElementById("taskInput");
+        const buttonAdd = document.getElementById("taskAdd");
+        const taskList = document.getElementById("taskList");
+
+        buttonAdd.addEventListener("click", addTask);
+
+        // funcion para añadir una tarea a partir del nombre
+        function addTask() {
+          // comprueba que no este vacio
+          if (taskInput.value == "") return;
+          // crea un elemento nuevo de tipo <li>
+          const newLi = document.createElement("li");
+
+          // inserta lineas en newLi con .innerHTML
+          newLi.innerHTML =
+            "<input type='checkbox' />" +
+            "<span>" +
+            taskInput.value +
+            "</span>" +
+            "<button class='taskRemove'>Eliminar</button>";
+
+          newLi
+            .querySelector(".taskRemove")
+            .addEventListener("click", function () {
+              newLi.remove();
+            });
+
+          newLi
+            .querySelector("input[type='checkbox']")
+            .addEventListener("change", function () {
+              const span = newLi.querySelector("span");
+
+              // this seria lo seleccionado con querySelector → inputs con checkbox
+              if (this.checked) {
+                // no se usa this sino span porque se cambia un elemento distinto al que se le añade el addEventListener
+                span.style.textDecoration = "line-through";
+              } else {
+                // aunque inicialmente nunca tiene una linea se añade el else por si quita el check y se quite el linethrough
+                span.style.textDecoration = "none";
+              }
+            });
+
+          taskList.appendChild(newLi);
+          taskInput.value = "";
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Ej4</h1>
+    <p>
+      Crear una lista de tareas de tal forma que tengamos un input y un botón
+      para añadir tareas y cada tarea se va mostrando, incluyendo un botón para
+      eliminarla. También añadiremos un checkbox para marcar la tarea como
+      completada. El script debe incluirse en el head de la página.
+    </p>
+    <label>Añadir tarea:</label>
+    <input id="taskInput" type="text" placeholder="Introduce el nombre" />
+    <button id="taskAdd">Añadir</button>
+    <h2>Lista de tareas</h2>
+    <ul id="taskList"></ul>
+  </body>
+</html>
