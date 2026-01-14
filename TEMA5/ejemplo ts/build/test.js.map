@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "test.js",
+  "sourceRoot": "",
+  "sources": [
+    "../src/test.ts"
+  ],
+  "names": [],
+  "mappings": ";;AAAA,IAAI,SAAiB,CAAC;AACtB,IAAI,CAAC,GAAY,CAAC,CAAC,CAAC,+DAA+D;AACnF,IAAI,EAAO,CAAC,CAAC,wBAAwB;AAErC,CAAC,GAAG,MAAgB,CAAC;AACrB,CAAC,GAAW,MAAM,CAAC;AAEnB,IAAI,CAAY,CAAC,CAAC,aAAa;AAE/B,IAAI,KAAK,GAAa,EAAE,CAAC;AACzB,KAAK,CAAC,IAAI,CAAC,MAAM,CAAC,CAAC;AACnB,iBAAiB"
+}
